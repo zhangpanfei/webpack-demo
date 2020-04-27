@@ -3,9 +3,9 @@
 - webpack 4.43.0 版本
 - node: 10.16.3 版本
 
-### 1.入门
+## 1.入门
 
-#### 1.1 初始化项目
+### 1.1 初始化项目
 
 - 新建一个目录，初始化 npm
 
@@ -44,7 +44,7 @@ npm run build
 
 如果生成了一个 dist 文件夹，并且内部含有 main.js 说明已经打包成功了
 
-#### 1.2 开始自己的配置
+### 1.2 开始自己的配置
 
 - 项目根目录新建一个 webpack.config.js
 
@@ -73,7 +73,7 @@ module.exports = {
 - 执行 npm run build
   生成 dist/output.js 文件说明成功，这个文件就是在浏览器能使用的 js 文件
 
-### 1.3 配置 html 模板
+## 1.3 配置 html 模板
 
 js 文件打包好了,但是我们不可能每次在 html 文件中手动引入打包好的 js
 
@@ -143,7 +143,7 @@ build 生成文件
 
 可以发现打包生成的 js 文件已经被自动引入 html 文件中
 
-#### 1.3.1 多入口文件如何开发
+### 1.3.1 多入口文件如何开发
 
 > 生成多个入口文件 用多个 html-webpack-plugin 插件来解决这个问题
 
@@ -178,7 +178,7 @@ module.exports = {
 此时会生成以下目录
 [dir](https://cdn.jsdelivr.net/gh/zhangpanfei/static@demo/img/webpack_1.png)
 
-### 1.3.2 clean-webpack-plugin
+## 1.3.2 clean-webpack-plugin
 
 > 每次执行 npm run build 会发现 dist 文件夹里会残留上次打包的文件，这里用一个 plugin 来帮我们在打包输出前清空文件夹 clean-webpack-plugin
 
@@ -194,7 +194,7 @@ module.exports = {
 };
 ```
 
-#### 1.4 引用 CSS
+### 1.4 引用 CSS
 
 入口文件是 js，所以在入口 js 中引入 css 文件
 [img](https://cdn.jsdelivr.net/gh/zhangpanfei/static@demo/img/webpack_2.png)
@@ -226,7 +226,7 @@ module.exports = {
 };
 ```
 
-#### 1.4.1 为 css 添加浏览器前缀
+### 1.4.1 为 css 添加浏览器前缀
 
 ```
 npm i -D postcss-loader autoprefixer
@@ -290,7 +290,7 @@ module.exports = {
 这时候想把 css 拆分出来用外链的形式引入 css 文件怎么做呢？
 这时候就需要借助插件来帮助
 
-#### 1.4.2 拆分 css
+### 1.4.2 拆分 css
 
 ```
 npm i -D mini-css-extract-plugin
@@ -321,7 +321,7 @@ module.exports = {
 };
 ```
 
-#### 1.4.3 拆分多个 css
+### 1.4.3 拆分多个 css
 
 > 上面我们所用到的 mini-css-extract-plugin 会将所有的 css 样式合并为一个 css 文件。如果你想拆分为一一对应的多个 css 文件,我们需要使用到 extract-text-webpack-plugin，而目前 mini-css-extract-plugin 还不支持此功能。我们需要安装@next 版本的 extract-text-webpack-plugin
 
@@ -361,7 +361,7 @@ module.exports = {
 
 会分别把 less 文件编译成 less.css, css 文件编译成 index.css
 
-#### 1.5 打包 图片、字体、媒体、等文件
+### 1.5 打包 图片、字体、媒体、等文件
 
 > url-loader 就是将文件在进行一些处理后（主要是处理文件名和路径、解析文件 url），并将文件移动到输出的目录中, url-loader 一般与 file-loader 搭配使用，功能与 file-loader 类似，如果文件小于限制的大小。则会返回 base64 编码，否则使用 file-loader 将文件移动到输出的目录中
 
@@ -428,7 +428,7 @@ module.exports = {
 };
 ```
 
-#### 1.6 用 babel 转义 js 文件
+### 1.6 用 babel 转义 js 文件
 
 为了使我们的 js 代码兼容更多的环境我们需要安装依赖
 
@@ -488,11 +488,11 @@ module.exports = {
 
 > 以上是对 webpack 的功能有了一个初步的了解，但是要想熟练应用于开发中，我们需要一个系统的实战。让我们一起摆脱脚手架尝试自己搭建一个 vue 开发环境
 
-### 2 搭建 vue 开发环境
+## 2 搭建 vue 开发环境
 
 上面的小例子已经帮助而我们实现了打包 css、图片、js、html 等文件。 但是我们还需要以下几种配置
 
-#### 2.1 解析.vue 文件
+### 2.1 解析.vue 文件
 
 ```
 npm i -D vue-loader vue-template-compiler vue-style-loader
@@ -525,7 +525,7 @@ module.exports = {
 };
 ```
 
-#### 2.2 配置 webpack-dev-server 进行热更新
+### 2.2 配置 webpack-dev-server 进行热更新
 
 ```
 npm i -D webpack-dev-server
@@ -634,7 +634,7 @@ module.exports = {
 };
 ```
 
-#### 2.3 配置打包命令
+### 2.3 配置打包命令
 
 ```json
 "scripts": {
@@ -643,7 +643,7 @@ module.exports = {
   },
 ```
 
-##### 测试一下
+#### 测试一下
 
 - 1.新建 src/main.js
 
@@ -698,7 +698,7 @@ export default {
 
 执行npm run dev这时候如果浏览器出现Vue开发环境运行成功，那么恭喜你，已经成功迈出了第一步
 
-#### 2.4 区分开发环境与生产环境
+### 2.4 区分开发环境与生产环境
 
 实际应用到项目中，我们需要区分开发环境与生产环境，我们在原来webpack.config.js的基础上再新增两个文件
 
@@ -720,7 +720,7 @@ npm i -D  webpack-merge copy-webpack-plugin optimize-css-assets-webpack-plugin u
 * uglifyjs-webpack-plugin 压缩js
 > webpack mode设置production的时候会自动压缩js代码。原则上不需要引入uglifyjs-webpack-plugin进行重复工作。但是optimize-css-assets-webpack-plugin压缩css的同时会破坏原有的js压缩，所以这里我们引入uglifyjs进行压缩
 
-#### 2.4.1 webpack.config.js
+### 2.4.1 webpack.config.js
 
 ```js
 const path = require('path')
@@ -859,7 +859,7 @@ module.exports = {
 }
 ```
 
-#### 2.4.2 webpack.dev.js
+### 2.4.2 webpack.dev.js
 
 ```js
 const Webpack = require('webpack')
@@ -879,7 +879,7 @@ module.exports = WebpackMerge(webpackConfig,{ // 合并
 })
 ```
 
-#### 2.4.3 webpack.prod.js
+### 2.4.3 webpack.prod.js
 
 ```js
 const path = require('path')
@@ -921,27 +921,27 @@ module.exports = WebpackMerge(webpackConfig,{
 })
 ```
 
-#### 2.5 优化webpack配置
+### 2.5 优化webpack配置
 
 优化配置对我们来说非常有实际意义，这实际关系到你打包出来文件的大小，打包的速度等。 具体优化可以分为以下几点：
 
-#### 2.5.1 优化打包速度
+### 2.5.1 优化打包速度
 构建速度指的是我们每次修改代码后热更新的速度以及发布前打包文件的速度。
 
-##### 2.5.1.1 合理的配置mode参数与devtool参数
+#### 2.5.1.1 合理的配置mode参数与devtool参数
 
 mode可设置development production两个参数，
 如果没有设置，webpack4 会将 mode 的默认值设置为 production，
 production模式下会进行treeshaking(去除无用代码)和uglifyjs(代码压缩混淆)
 
-##### 2.5.1.2 缩小文件的搜索范围(配置include exclude alias noParse extensions)
+#### 2.5.1.2 缩小文件的搜索范围(配置include exclude alias noParse extensions)
 
 * **alias**: 当我们代码中出现 import 'vue'时， webpack会采用向上递归搜索的方式去node_modules 目录下找。为了减少搜索范围我们可以直接告诉webpack去哪个路径下查找。也就是别名(alias)的配置。
 * **include exclude** 同样配置include exclude也可以减少webpack loader的搜索转换时间。
 * **noParse** 当我们代码中使用到import jq from 'jquery'时，webpack会去解析jq这个库是否有依赖其他的包。但是我们对类似jquery这类依赖库，一般会认为不会引用其他的包(特殊除外,自行判断)。增加noParse属性,告诉webpack不必解析，以此增加打包速度。
 * **extensions** webpack会根据extensions定义的后缀查找文件(频率较高的文件类型优先写在前面)
 
-##### 2.5.1.3 使用HappyPack开启多进程Loader转换
+#### 2.5.1.3 使用HappyPack开启多进程Loader转换
 > 在webpack构建过程中，实际上耗费时间大多数用在loader解析转换以及代码的压缩中。日常开发中我们需要使用Loader对js，css，图片，字体等文件做转换操作，并且转换的文件数据量也是非常大。由于js单线程的特性使得这些转换操作不能并发处理文件，而是需要一个个文件进行处理。HappyPack的基本原理是将这部分任务分解到多个子进程中去并行处理，子进程处理完成后把结果发送到主进程中，从而减少总的构建时间
 
 ```
@@ -983,7 +983,7 @@ module.exports = {
 };
 ```
 
-##### 2.5.1.4 使用webpack-parallel-uglify-plugin 增强代码压缩
+#### 2.5.1.4 使用webpack-parallel-uglify-plugin 增强代码压缩
 
 > 上面对于loader转换已经做优化，那么下面还有另一个难点就是优化代码的压缩时间。
 
@@ -1018,7 +1018,7 @@ module.exports = {
 };
 ```
 
-##### 2.5.1.5 抽离第三方模块
+#### 2.5.1.5 抽离第三方模块
 
 > 对于开发项目中不经常会变更的静态依赖文件。类似于我们的elementUi、vue全家桶等等。因为很少会变更，所以我们不希望这些依赖要被集成到每一次的构建逻辑中去。 这样做的好处是每次更改我本地代码的文件的时候，webpack只需要打包我项目本身的文件代码，而不会再去编译第三方库。以后只要我们不升级第三方包的时候，那么webpack就不会对这些库去打包，这样可以快速的提高打包的速度。
 
@@ -1100,7 +1100,7 @@ npm run dll
 直接执行npm run dev , npm run build的时候会发现我们的打包速度明显有所提升。
 因为我们已经通过dllPlugin将第三方依赖包抽离出来了。
 
-##### 2.5.1.6 配置缓存
+#### 2.5.1.6 配置缓存
 
 > 我们每次执行构建都会把所有的文件都重复编译一遍，这样的重复工作是否可以被缓存下来呢，答案是可以的，目前大部分 loader 都提供了cache 配置项。比如在 babel-loader 中，可以通过设置cacheDirectory 来开启缓存，babel-loader?cacheDirectory=true 就会将每次的编译结果写进硬盘文件（默认是在项目根目录下的node_modules/.cache/babel-loader目录内，当然你也可以自定义）
 
@@ -1126,11 +1126,11 @@ module.exports = {
 }
 ```
 
-#### 2.5.2 优化打包文件体积
+### 2.5.2 优化打包文件体积
 
 > 打包的速度我们是进行了优化，但是打包后的文件体积却是十分大，造成了页面加载缓慢，浪费流量等，接下来让我们从文件体积上继续优化
 
-##### 2.5.2.1 引入webpack-bundle-analyzer分析打包后的文件
+#### 2.5.2.1 引入webpack-bundle-analyzer分析打包后的文件
 
 webpack-bundle-analyzer将打包后的内容树展示为方便交互的直观树状图，让我们知道我们所构建包中真正引入的内容
 
@@ -1166,7 +1166,7 @@ windows请安装npm i -D cross-env
 
 运行npm run analyz浏览器会自动打开文件依赖图的网页
 
-##### 2.5.2.3 externals
+#### 2.5.2.3 externals
 
 > 按照官方文档的解释，如果我们想引用一个库，但是又不想让webpack打包，并且又不影响我们在程序中以CMD、AMD或者window/global全局等方式进行使用，那就可以通过配置Externals。这个功能主要是用在创建一个库的时候用的，但是也可以在我们项目开发中充分使用 Externals的方式，我们将这些不需要打包的静态资源从构建逻辑中剔除出去，而使用 CDN 的方式，去引用它们。
 
@@ -1193,7 +1193,7 @@ import $ from 'jquery';
 $('.my-element').animate(/* ... */);
 ```
 
-##### 2.5.2.3 Tree-shaking
+#### 2.5.2.3 Tree-shaking
 
 > 这里单独提一下tree-shaking,是因为这里有个坑。tree-shaking的主要作用是用来清除代码中无用的部分。目前在webpack4 我们设置mode为production的时候已经自动开启了tree-shaking。但是要想使其生效，生成的代码必须是ES6模块。不能使用其它类型的模块如CommonJS之流。如果使用Babel的话，这里有一个小问题，因为Babel的预处理（preset）默认会将任何模块类型都转译成CommonJS类型，这样会导致tree-shaking失效。修正这个问题也很简单，在.babelrc文件或在webpack.config.js文件中设置modules： false就好了
 
@@ -1231,11 +1231,11 @@ module: {
 }
 ```
 
-### 3 手写webpack
+## 3 手写webpack
 
 > 经历过上面两个部分，我们已经可以熟练的运用相关的loader和plugin对我们的代码进行转换、解析。接下来我们自己手动实现loader与plugin，使其在平时的开发中获得更多的乐趣。
 
-#### 3.1 手写webpack loader
+### 3.1 手写webpack loader
 
 > loader从本质上来说其实就是一个node模块。相当于一台榨汁机(loader)将相关类型的文件代码(code)给它。根据我们设置的规则，经过它的一系列加工后还给我们加工好的果汁(code)。
 
@@ -1301,7 +1301,7 @@ module.exports = {
 
 > 实际上在webpack4中已经集成了去除console功能，在minimizer中可配置 去除console,以上是个小栗子
 
-#### 3.2 手写webpack plugin
+### 3.2 手写webpack plugin
 
 > 在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过Webpack提供的API改变输出结果。通俗来说：一盘美味的 盐豆炒鸡蛋 需要经历烧油 炒制 调味到最后的装盘等过程，而plugin相当于可以监控每个环节并进行操作，比如可以写一个少放胡椒粉plugin,监控webpack暴露出的生命周期事件(调味)，在调味的时候执行少放胡椒粉操作。那么它与loader的区别是什么呢？上面我们也提到了loader的单一原则,loader只能一件事，比如说less-loader,只能解析less文件，plugin则是针对整个流程执行广泛的任务。
 
